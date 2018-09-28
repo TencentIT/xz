@@ -56,7 +56,7 @@ router.get("/list",(req,res)=>{
 
 });
 
-//依据用户id查找新闻详细信息
+//功能二:依据用户id查找新闻详细信息
 router.get("/find",(req,res)=>{
 
     var id = req.query.id;
@@ -74,5 +74,48 @@ router.get("/find",(req,res)=>{
     })
 })
 //http://localhost:3000/newslist/find?id=1
+
+//功能三:分页显示评论列表
+router.get("/commentlist",(req,res)=>{
+  var pno =req.query.pno;
+  var pageSize=req.query.pageSize;
+  var nid=parseInt(req.query.nid);
+  if(!pno){pno=1}
+  if(!pageSize){pageSize=5}
+
+    var progress = 0;
+    var obj ={pno:pno,pageSize:pageSize};
+
+  var sql=" SELECT count(id) as c FROM xz_comment";
+      sql+=" WHERE nid=?";
+  pool.query(sql,[nid],(err,result)=>{
+      if(err) throw err;
+      progress+=50;
+      var pageCount = Math.ceil(result[0].c/pageSize);
+
+      if(progress==100){
+        res.send(obj);
+      }
+  })
+  var offset=parseInt((pno-1)*pageSize);
+  pageSize=parseInt(pageSize);
+  var sql=" SELECT `id`, `nid`,";
+      sql+=" `ctime`, `comment`, ";
+      sql+=" `username`, `isdel` ";
+      sql+=" FROM `xz_comment`";
+      sql+=" WHERE nid=?";
+      sql+=" LIMIT ?,?";
+  pool.query(sql,[nid,offset,pageSize],(err,result)=>{
+    if(err) throw err;
+      progress+=50;
+      obj.data = result;
+      if(progress==100){
+        res.send(obj);
+      }
+  })
+})
+//http:localhost:3000/newslist/commentlist?pno=1&pageSize=5&nid=1
+
+//功能四:添加一条评论
 
 module.exports=router;
