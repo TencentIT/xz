@@ -61,3 +61,34 @@ INSERT INTO xz_news VALUES(null,'107','107107',0,'http://127.0.0.1:3000/banner1.
 INSERT INTO xz_news VALUES(null,'108','108108',0,'http://127.0.0.1:3000/banner2.png',0,now());
 INSERT INTO xz_news VALUES(null,'109','109109',0,'http://127.0.0.1:3000/banner3.png',0,now());
 INSERT INTO xz_news VALUES(null,'110','110110',0,'http://127.0.0.1:3000/banner4.png',0,now());
+
+#创建评论信息表
+CREATE TABLE xz_comment(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nid  INT,
+    ctime DATETIME,
+    comment VARCHAR(50),
+    username VARCHAR(25),
+    isdel INT
+);
+
+INSERT INTO xz_comment VALUES(null,1,now(),"111","demo",0);
+INSERT INTO xz_comment VALUES(null,1,now(),"112","demo",0);
+INSERT INTO xz_comment VALUES(null,1,now(),"113","demo",0);
+INSERT INTO xz_comment VALUES(null,1,now(),"114","demo",0);
+INSERT INTO xz_comment VALUES(null,1,now(),"115","demo",0);
+INSERT INTO xz_comment VALUES(null,1,now(),"116","demo",0);
+INSERT INTO xz_comment VALUES(null,1,now(),"117","demo",0);
+INSERT INTO xz_comment VALUES(null,1,now(),"118","demo",0);
+INSERT INTO xz_comment VALUES(null,1,now(),"119","demo",0);
+
+
+INSERT INTO xz_comment VALUES(null,2,now(),"211","dingding",0);
+INSERT INTO xz_comment VALUES(null,2,now(),"212","dingding",0);
+INSERT INTO xz_comment VALUES(null,2,now(),"213","dingding",0);
+INSERT INTO xz_comment VALUES(null,2,now(),"214","dingding",0);
+INSERT INTO xz_comment VALUES(null,2,now(),"215","dingding",0);
+INSERT INTO xz_comment VALUES(null,2,now(),"216","dingding",0);
+INSERT INTO xz_comment VALUES(null,2,now(),"217","dingding",0);
+INSERT INTO xz_comment VALUES(null,2,now(),"218","dingding",0);
+INSERT INTO xz_comment VALUES(null,2,now(),"219","dingding",0);
