@@ -56,4 +56,23 @@ router.get("/list",(req,res)=>{
 
 });
 
+//依据用户id查找新闻详细信息
+router.get("/find",(req,res)=>{
+
+    var id = req.query.id;
+    // if(!id){
+        
+    // }
+    var sql = " SELECT `id`, `title`, `content`,"
+        sql +="  `click`, `img_url`, `price`,  "
+        sql+= " `ctime` FROM `xz_news` WHERE id=?";
+
+    pool.query(sql,[id],(err,result)=>{
+        if(err) throw err;
+        // console.log(result);
+        res.send({code:1,msg:result});
+    })
+})
+//http://localhost:3000/newslist/find?id=1
+
 module.exports=router;

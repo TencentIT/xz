@@ -7,7 +7,7 @@ const cors = require("cors");
 
 var app=express();
 app.use(cors({
-	origin:["http://127.0.0.1:3001","http://localhost:3001","http://127.0.0.1:3004","http://127.0.0.1:3005"],
+	origin:["http://127.0.0.1:3001","http://localhost:3001","http://127.0.0.1:3004","http://127.0.0.1:3005","http://127.0.0.1:3006"],
 	crendentials:true
 }))
 

@@ -10,7 +10,7 @@
             <div class="news_content">
                 <img src="../../img/yuantiao.jpg" alt="">
                 <p>
-                     <!-- {{newsinfo.conent}} -->
+                     {{newsinfo.content}}
                 </p>
             </div>
         </div>
@@ -36,6 +36,7 @@ import comment from "../subComponents/comment.vue"
                 this.$http.get(url).then(result=>{
                     console.log(222,result);
                     this.newsinfo = result.body.msg[0];
+                    // console.log(2333,result.body.msg[0].content);
                 })
             }
         },
@@ -62,8 +63,7 @@ import comment from "../subComponents/comment.vue"
         justify-content:space-between;
     }
     .container{
-        /* border:1px solid red;    */
-        height:200px;
+       
         text-align:center;
     }
     .news_content img{
