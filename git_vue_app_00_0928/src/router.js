@@ -20,4 +20,6 @@ export default new Router({
     {path:"/search",component:SearchContainer},
     {path:"/newsDetail/:id",component:NewsDetailContainer}
   ]
+  ,
+  linkActiveClass:"mui-active"    //覆盖默认的路由高亮类
 })

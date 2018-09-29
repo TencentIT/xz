@@ -28,15 +28,15 @@
         },
         methods:{
             getNewList(){
-                var url = "http://localhost:3000/newslist/list";
+                var url = "newslist/list";
                 this.$http.get(url).then(result=>{
-                     console.log(result);
-                    // if(result.body.ok ==1){
-                        // console.log(result);
+                    //  console.log(6,result);
+                    if(result.body.msg ==1){
+                        // console.log(7,result);
                         this.list = result.body.data;
-                    // }else{
-                    //     Toast("加载失败");
-                    // }
+                    }else{
+                        Toast("加载失败");
+                    }
                 })
             },
             getMore(){

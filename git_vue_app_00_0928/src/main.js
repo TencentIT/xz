@@ -28,6 +28,7 @@ Vue.filter("dataFormat",function(datastr,pattern="YYYY-MM-DD"){
   return new Date(datastr).toLocaleString();
 });
 
+
 //6 设置全局ajax访问基础路径
 Vue.http.options.root = "http://127.0.0.1:3000/"
 

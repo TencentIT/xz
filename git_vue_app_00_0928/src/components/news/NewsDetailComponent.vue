@@ -15,9 +15,7 @@
             </div>
         </div>
         <!-- 评论区域  这里的id 是指父组件的id data（）{} 里面的id-->
-        <comment-box :id="this.id">   
-            评论区域
-        </comment-box>
+        <comment-box :id="this.id"></comment-box>
     </div>
 </template>
 <script>
@@ -25,16 +23,17 @@ import comment from "../subComponents/comment.vue"
     export default{
         data(){
             return{
+                //获取到URL中的id 的值 然后待会把这个id传递给子组件comment.vue 
                 id:this.$route.params.id,
                 newsinfo:{}
             };
         },
         methods:{
             getNewsDetail(){
-                var id = this.$route.params.id;
+                // var id = this.$route.params.id;
                 var url = "newslist/find?id="+this.id;
                 this.$http.get(url).then(result=>{
-                    console.log(222,result);
+                    // console.log(222,result);
                     this.newsinfo = result.body.msg[0];
                     // console.log(2333,result.body.msg[0].content);
                 })

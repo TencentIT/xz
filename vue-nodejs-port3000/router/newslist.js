@@ -34,6 +34,7 @@ router.get("/list",(req,res)=>{
 
         progress+=50;
         if(progress==100){
+            obj.msg=1;
             res.send(obj);
         }
     });
@@ -48,6 +49,7 @@ router.get("/list",(req,res)=>{
         // console.log(2,result);
         progress+=50;
         if(progress==100){
+             obj.msg=1;
             obj.data = result;
             // console.log(obj);
             res.send(obj);
@@ -75,7 +77,7 @@ router.get("/find",(req,res)=>{
 })
 //http://localhost:3000/newslist/find?id=1
 
-//功能三:分页显示评论列表
+//功能三:分页显示评论列表 nid  n 就是news nid 代表新闻id 
 router.get("/commentlist",(req,res)=>{
   var pno =req.query.pno;
   var pageSize=req.query.pageSize;
@@ -91,7 +93,7 @@ router.get("/commentlist",(req,res)=>{
   pool.query(sql,[nid],(err,result)=>{
       if(err) throw err;
       progress+=50;
-      var pageCount = Math.ceil(result[0].c/pageSize);
+      var pageCount = Math.ceil(result[0].c/pageSize);  
 
       if(progress==100){
         res.send(obj);
