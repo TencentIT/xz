@@ -39,6 +39,7 @@
 </template>
 
 <script>
+//因为Toast组件只有这个文件里面使用 所以单独引入而不是在main.js引入 ，main.js里面引入的是全局都用的公共组件
 import {Toast} from "mint-ui";
 export default{
   data(){

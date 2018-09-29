@@ -33,7 +33,8 @@ Vue.filter("dataFormat",function(datastr,pattern="YYYY-MM-DD"){
 Vue.http.options.root = "http://127.0.0.1:3000/"
 
 
-
+//设置全局ajax post 访问格式 
+Vue.http.options.emulateJSON = true;
 
 
 

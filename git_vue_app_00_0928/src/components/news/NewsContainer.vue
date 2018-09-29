@@ -44,7 +44,7 @@
                 this.pageIndex++;
                 var url = "newslist/list?pno="+this.pageIndex;
                 this.$http.get(url).then(result=>{
-                //    console.log(result);
+                   console.log(result);
                    this.list =  this.list.concat(result.body.data);
                 })
             }

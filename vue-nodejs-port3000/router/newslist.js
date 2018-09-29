@@ -119,5 +119,30 @@ router.get("/commentlist",(req,res)=>{
 //http:localhost:3000/newslist/commentlist?pno=1&pageSize=5&nid=1
 
 //功能四:添加一条评论
+router.post("/saveComment",(req,res)=>{
+  // nid username content 
+  console.log(req.body);
+  var nid = parseInt(req.body.nid), //新闻编号
+      username = req.body.username, //用户名
+      content = req.body.content; //评论内容
+      console.log("1"+":"+nid+":"+username+":"+content);
+  if(content.length<2){
+    res.send({code:-1,msg:"亲，评论内容太少"});
+    return;
+  }
+  //
+   var sql = "INSERT INTO `xz_comment`(`id`, `nid`, `ctime`, `comment`, `username`, `isdel`) VALUES (null,?,now(),?,?,0)";
+    pool.query(sql,[nid,content,username],(err,result)=>{
+      if(err) throw err;
+      if(result.affectedRows==1){
+        res.send({code:1,msg:"添加成功"})
+      }
+      else
+        res.send({code:-1,msg:"添加失败"})
+      //console.log(11,result);
+      // res.send(result);
+    })
+})
+//http://localhost:3000/newslist/saveComment?nid=1&id=1&username
 
 module.exports=router;
