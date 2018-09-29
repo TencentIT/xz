@@ -6,35 +6,43 @@
        <hr/>
        <textarea placeholder="请输入评论的内容(最多吐槽120文字)" maxlength="120" v-model="content"></textarea>
         <mt-button size="large" type="primary" @click="postComment()">发表评论
-        </mt-button><br>
-       <div class="cmt-list">
-          <div class="cmt-list-item">
-            <div class="cmt-title">第一楼:&nbsp;&nbsp; 用户:demo 发表时间:2000-10-10</div>
+        </mt-button><br>    
+       <div class="cmt-list"  v-for="(item,i) in list"  :key="item.id">
+          <div class="cmt-list-item" >
+            <div class="cmt-title">第{{i+1}}楼:&nbsp;&nbsp; 用户:{{item.username}} 发表时间:{{item.ctime|dataFormat}}</div>
           </div>
        
           <div class="cmt-body">
-            人生苦短，我学node
+              <!-- 12132123132 -->
+              {{item.comment}}
           </div>
        </div>
-       <mt-button size="large" type="danger">加载更多
+       <mt-button size="large" type="danger" @click="getCommentList()">加载更多
        </mt-button><br> 
     </div>
 </template>
 <script>
+import {Toast} from "mint-ui";
     export default{
         data(){
             return {
             // id:
             list:[],
-            content:""       //双向绑定的留言
+            content:"" ,  //双向绑定的留言
+            pageIndex:0
             }
         },
         methods:{
             getCommentList(){
-                this.$http.get("newslist/commentlist?nid="+this.id).then(result=>{
+                //分页  
+                this.pageIndex++;
+                var url = "newslist/commentlist?nid="+this.id;
+                url+="&pno="+this.pageIndex;
+                this.$http.get(url).then(result=>{
                         console.log(62,result);
                         // if(err) throw err;
-                        this.list = result;
+                        this.list =this.list.concat(result.body.data);
+
                 })
             },
             postComment(){
@@ -46,10 +54,25 @@
                     // console.log(username+":"+nid+":"+content);
                     var url = "newslist/saveComment";
                     var obj = {nid:nid,content:content,username:username};
-                    console.log(content,nid,username);
+                    // console.log(content,nid,username);
+                    if(content.length<2){
+                        Toast("亲，评论内容太少")
+                        return;
+                    }
                 this.$http.post(url,obj).then(result=>{
                     console.log(result);
+                    
+                    if(result.body.code==1 ){
+                        Toast(result.body.msg   )
+                        this.content = "";
+                        this.pageIndex=0;   //将当前页码清空
+                        this.list = [];     //数据值清空
+                        this.getCommentList();  //加载第一页
+                    }
                 })
+            },
+            getMore(){
+
             }
         },
         created(){

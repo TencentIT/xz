@@ -103,9 +103,10 @@ router.get("/commentlist",(req,res)=>{
   pageSize=parseInt(pageSize);
   var sql=" SELECT `id`, `nid`,";
       sql+=" `ctime`, `comment`, ";
-      sql+=" `username`, `isdel` ";
+      sql+=" `username`, `isdel`   ";
       sql+=" FROM `xz_comment`";
       sql+=" WHERE nid=?";
+      sql+=" ORDER BY id DESC";
       sql+=" LIMIT ?,?";
   pool.query(sql,[nid,offset,pageSize],(err,result)=>{
     if(err) throw err;
@@ -118,14 +119,14 @@ router.get("/commentlist",(req,res)=>{
 })
 //http:localhost:3000/newslist/commentlist?pno=1&pageSize=5&nid=1
 
-//功能四:添加一条评论
+//功能四:添加一条评论 
 router.post("/saveComment",(req,res)=>{
   // nid username content 
-  console.log(req.body);
+  // console.log(req.body);
   var nid = parseInt(req.body.nid), //新闻编号
       username = req.body.username, //用户名
       content = req.body.content; //评论内容
-      console.log("1"+":"+nid+":"+username+":"+content);
+      // console.log("1"+":"+nid+":"+username+":"+content);
   if(content.length<2){
     res.send({code:-1,msg:"亲，评论内容太少"});
     return;

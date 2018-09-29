@@ -7,7 +7,7 @@ const bodyParse = require("body-parser");
 
 var app=express();
 app.use(cors({
-	origin:["http://127.0.0.1:3001","http://localhost:3001","http://127.0.0.1:3004","http://127.0.0.1:3005","http://127.0.0.1:3006"],
+	origin:["http://127.0.0.1:3001","http://localhost:3001","http://127.0.0.1:3004","http://127.0.0.1:3005","http://127.0.0.1:3006","http://172.163.1.45:3004"],
 	crendentials:true
 }))
 app.use(bodyParse.urlencoded({
