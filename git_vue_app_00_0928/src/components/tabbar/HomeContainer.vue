@@ -15,10 +15,13 @@
                             <div class="mui-media-body">新闻资讯</div>
                       </router-link>
                     </li>
-                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                      <router-link to="/goodslist">
                             <img src="../../img/menu2.png" alt="">
                             <!-- <span class="mui-badge">1</span> -->
-                            <div class="mu  i-media-body">Email</div></a></li>
+                            <div class="mu  i-media-body">商品</div>
+                      </router-link>
+                    </li>
                     <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                            <img src="../../img/menu3.png" alt="">
                             <div class="mui-media-body">Chat</div></a></li>

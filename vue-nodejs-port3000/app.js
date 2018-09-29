@@ -4,6 +4,7 @@ const routerImageList=require("./router/imagelist");
 const routerNewsList=require("./router/newslist");
 const cors = require("cors");
 const bodyParse = require("body-parser");
+const goodslist = require("./router/goodslist.js");
 
 var app=express();
 app.use(cors({
@@ -17,5 +18,4 @@ app.listen(3000);
 app.use(express.static(__dirname+"/public"));
 app.use("/imagelist",routerImageList);
 app.use("/newslist",routerNewsList);
-
-
+app.use("/goodslist",goodslist);

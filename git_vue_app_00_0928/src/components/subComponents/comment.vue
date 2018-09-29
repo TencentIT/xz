@@ -70,10 +70,7 @@ import {Toast} from "mint-ui";
                         this.getCommentList();  //加载第一页
                     }
                 })
-            },
-            getMore(){
-
-            }
+            } 
         },
         created(){
             this.getCommentList();  
