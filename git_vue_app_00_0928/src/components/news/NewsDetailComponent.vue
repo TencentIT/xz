@@ -9,9 +9,7 @@
           
             <div class="news_content">
                 <img src="../../img/yuantiao.jpg" alt="">
-                <p>
-                     {{newsinfo.content}}
-                </p>
+             
             </div>
         </div>
         <!-- 评论区域  这里的id 是指父组件的id data（）{} 里面的id-->
