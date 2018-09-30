@@ -6,7 +6,6 @@
         <div class="mui-card">
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
-                    图片轮播
                     <v-swiper :list="imagelist"></v-swiper>
                 </div>
             </div>  
@@ -16,21 +15,28 @@
 				<div class="mui-card-header">商品参数</div>
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-						大小<br/>
-                        颜色<br/>   
+						市场价<del>￥{{info.p_old}}</del>  
+                        销售价<del><span>￥{{info.p_now}}</span></del>
 					</div>
 				</div>
 				<div class="mui-card-footer">添加至购物车，立即购买</div>
-			</div>
+        </div>
+		    	<div class="mui-numbox">
+					<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+					<input class="mui-input-numbox" type="number" value="1"/>
+					<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+				</div>
     </div>
 </template>
 <script>
 import swiper from "../subComponents/swiper.vue"
+import mui from "../../lib/mui/js/mui.js"
     export default{
        
         data(){
             return {
-                imagelist:[]
+                imagelist:[],
+                info:[]
             };
         },
         methods:{
@@ -42,6 +48,12 @@ import swiper from "../subComponents/swiper.vue"
                         console.log(1,this.imagelist);
                     }
                 })
+            },
+            findDetail(){
+                this.$http.get("goodslist/find").then(result=>{
+                    console.log(2,result)
+                    this.info = result.body;
+                })
             }
         },
         components:{
@@ -49,6 +61,7 @@ import swiper from "../subComponents/swiper.vue"
         },
         created(){
             this.getImageList();
+            this.findDetail();
         }
         
     }

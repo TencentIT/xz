@@ -26,5 +26,13 @@ router.get("/list",(req,res)=>{
 	];
 	res.send({code:1,msg:obj})
 });
+
+router.get("/find",(req,res)=>{
+  var obj={id:"9",title:"小辣椒 10",p_old:2199,p_now:2099,p_sn:"2199282",p_type:"青春款"}
+  res.send(obj);
+})
+
+
+
 //4:导出当前路由模块
 module.exports = router;
