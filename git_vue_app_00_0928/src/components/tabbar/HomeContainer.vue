@@ -16,7 +16,7 @@
                       </router-link>
                     </li>
                     <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                      <router-link to="/goodslist">
+                      <router-link to="/home/goodslist">
                             <img src="../../img/menu2.png" alt="">
                             <!-- <span class="mui-badge">1</span> -->
                             <div class="mu  i-media-body">商品</div>

@@ -8,7 +8,7 @@ import ShopContainer from "./components/tabbar/ShopContainer.vue"
 import SearchContainer from "./components/tabbar/SearchContainer.vue"
 import NewsDetailContainer from "./components/news/NewsDetailComponent.vue"
 import GoodList from "./components/goods/GoodList.vue"
-
+import GoodsInfo from "./components/goods/GoodsInfo.vue"
 
 Vue.use(Router)
 
@@ -21,7 +21,8 @@ export default new Router({
     {path:"/shop",component:ShopContainer},
     {path:"/search",component:SearchContainer},
     {path:"/newsDetail/:id",component:NewsDetailContainer},
-    {path:"/goodslist",component:GoodList}
+    {path:"/home/goodslist",component:GoodList},
+    {path:"/home/goodsInfo/:id",component:GoodsInfo,name:"goodsInfo"}
   ]
   ,
   linkActiveClass:"mui-active"    //覆盖默认的路由高亮类

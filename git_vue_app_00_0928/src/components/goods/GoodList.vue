@@ -1,6 +1,6 @@
 <template>
   <div class="app-goods-list">
-    <div class="app-goods-item" v-for="item in list" :key="item.id">
+    <div class="app-goods-item" v-for="item in list" @click="getDetail(item.id)" :key="item.id">
       <img :src="item.img_url" />
       <h1 class="title">{{item.title}}</h1>
       <div class="info">
@@ -35,6 +35,18 @@
           this.$http.get("goodslist/list").then(result=>{
               this.list = this.list.concat(result.body.msg)
           })
+      },
+      getDetail(id){
+       // console.log(e)  //MouseEvent{} e.target.dataset.id  
+        //编程序导航1
+        // this.$router.push("/home/goodsInfo");
+        //编程序导航2
+        this.$router.push({path:"/home/goodsInfo/"+id})
+         //编程序导航3
+        //  this.$router.push({
+        //    name:"goodsInfo",
+        //    params:{}
+        //  })
       }
     },
     created(){
