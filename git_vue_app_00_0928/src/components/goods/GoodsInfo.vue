@@ -21,22 +21,24 @@
 				</div>
 				<div class="mui-card-footer">添加至购物车，立即购买</div>
         </div>
-		    	<div class="mui-numbox">
-					<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-					<input class="mui-input-numbox" type="number" value="1"/>
-					<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-				</div>
+        <div class="mui-numbox">
+            <button class="mui-btn mui-btn-numbox-minus" type="button" @click="goSub">-</button>
+            <input class="mui-input-numbox" type="number" value="1" v-model="num"/>
+            <button class="mui-btn mui-btn-numbox-plus" type="button" @click="goAdd">+</button>
+        </div>
     </div>
 </template>
 <script>
 import swiper from "../subComponents/swiper.vue"
-import mui from "../../lib/mui/js/mui.js"
+// import mui from "../../lib/mui/js/mui.js"  由于vue脚手架自动启动了严格模式 与mui.js冲突 
+//解决方案1 下载扩展插件 禁用vue脚手架的严格模式 解决父方案2  不用mui.js自己写
     export default{
        
         data(){
             return {
                 imagelist:[],
-                info:[]
+                info:[],
+                num:0
             };
         },
         methods:{
@@ -54,7 +56,19 @@ import mui from "../../lib/mui/js/mui.js"
                     console.log(2,result)
                     this.info = result.body;
                 })
+            },
+            goSub(){
+                this.num--;
+
+                if(this.num<0){
+                    this.num=0
+                }
+            },
+            goAdd(){
+                if(this.num>=99){return;}
+                this.num++;
             }
+            
         },
         components:{
             "v-swiper":swiper

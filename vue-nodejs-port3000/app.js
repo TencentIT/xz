@@ -5,6 +5,8 @@ const routerNewsList=require("./router/newslist");
 const cors = require("cors");
 const bodyParse = require("body-parser");
 const goodslist = require("./router/goodslist.js");
+const cardlist  = require("./router/cardlist.js")
+
 
 var app=express();
 app.use(cors({
@@ -19,3 +21,4 @@ app.use(express.static(__dirname+"/public"));
 app.use("/imagelist",routerImageList);
 app.use("/newslist",routerNewsList);
 app.use("/goodslist",goodslist);
+app.use("/cardlist",cardlist)
